@@ -27,6 +27,20 @@ This repository contains the implementation of a microservice, named `student`, 
 └── README.md
 ```
 ## Microservice
+
+### Design
+Our microservice, forming part of a larger university system, follows a three-layer architectural pattern, composed of the following layers:
+
+- **Application Layer**: This is the top layer where the application logic and the Flask routes are defined. It's responsible for handling HTTP requests and responses, marshalling data, and interfacing with the domain layer for business logic.
+
+- **Domain Layer**: Here lies the core business logic of the microservice. It's responsible for executing operations related to student entities, enforcing business rules, and ensuring data consistency and validity.
+
+- **Data Access Layer**: This layer abstracts the logic for data storage and retrieval. It communicates with the database and performs CRUD (Create, Read, Update, Delete) operations, translating between the database and the domain models.
+
+The microservice is designed to be self-contained, with its own database access, business logic, and application interface. This design allows for independent scaling, development, and deployment of the microservice.
+
+### Functionality
+
 The student microservice offers the following functionalities:
 
 - **Add Student**: Adds a new student record with fields like name, age, and education level.
@@ -34,6 +48,30 @@ The student microservice offers the following functionalities:
 - **Get Student**: Retrieves information for a specific student using their student ID.
 - **Get All Students**: Fetches details of all students.
 - **Delete Student**: Removes a student's record from the system using their student ID.
+
+Below is an explanation of the key components of its `Dockerfile`:
+```
+# Use an official Python runtime as a base image
+FROM python:3.9
+
+# Set the working directory in the container to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . .
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Define environment variable
+ENV FLASK_APP=app.py
+
+# Run the application when the container launches
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+```
 
 ## Nginx
 The Nginx service in our architecture acts as a reverse proxy, efficiently managing and routing incoming HTTP requests to the appropriate backend service. The configuration for the Nginx service is designed to ensure optimal load distribution and seamless forwarding of client requests to the `microservice`. Below is an explanation of the key components of its `Dockerfile`:
