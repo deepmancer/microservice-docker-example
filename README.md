@@ -30,6 +30,7 @@ This repository contains the implementation of a microservice, named `student`, 
 │       └── requirements.txt
 └── README.md
 ```
+
 ## Microservice
 
 ### Design
@@ -80,9 +81,16 @@ CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
 ## Server
 The server component of our architecture acts as a gateway, interfacing with the client-side applications and the internal microservice responsible for student data management. It is designed to forward requests and aggregate responses, providing a cohesive API endpoint for client applications.
 The server provides a unified API endpoint that encapsulates internal microservice calls. It abstracts the complexity of the microservice architecture from the client, simplifying client integration and allowing for future scalability and modifications without affecting the client applications.
-The server offers the following endpoints:
-- `/student`: Accepts POST, GET, PUT, and DELETE requests to manage student records. It routes these requests to the corresponding endpoints of the student microservice.
-- `/students`: Handles GET requests to retrieve a list of all students from the student microservice.
+
+
+### API Endpoints
+The server exposes several endpoints that interact with the microservice, which in turn manages student data:
+
+- `POST /student`: Adds a new student.
+- `PUT /student`: Modifies an existing student.
+- `GET /student`: Retrieves a student's information.
+- `DELETE /student`: Deletes a student record.
+- `GET /students`: Retrieves information for all students.
 
 Below is an explanation of the key components of its `Dockerfile`:
 ```
@@ -139,8 +147,6 @@ Following is the algorithm used to perform load balancing:
 
 **Least Connections (least_conn)**: This algorithm directs traffic to the backend server with the fewest active connections. It's particularly useful in scenarios where the request load is unevenly distributed and some requests take longer to process than others. When a new request comes in, Nginx evaluates all the servers in the `upstream` block and forwards the request to the one with the least number of active connections.
 
-## Server
-
 ## Docker Configuration
 Docker Compose
 The docker-compose.yml file at the root of the project defines the multi-container Docker application. It specifies the configuration of the `microservice`, `nginx`, and `server` along with the `PostgreSQL` database.
@@ -184,9 +190,7 @@ volumes:
   postgres_data:
 ```
 
-
 ## Dockerfiles
-
 - **Microservice Dockerfile**: Sets up the Python environment, installs dependencies, and defines the command to start the Flask application.
 - **Nginx Dockerfile**: Uses the official Nginx image and copies the custom `nginx.conf` for routing and load balancing.
 - **Server Dockerfile**: Similar to the microservice, it sets up the environment for running the server application.
@@ -197,13 +201,4 @@ To run the application, use Docker Compose:
 
 ```docker-compose up --scale microservice=3```
 
-his command builds the Docker images for each service and starts the containers as defined in docker-compose.yml. Note that the `scale` argument can be dynamically set in each run.
- 
-## API Endpoints
-The server exposes several endpoints that interact with the microservice, which in turn manages student data:
-
-- `POST /student`: Adds a new student.
-- `PUT /student`: Modifies an existing student.
-- `GET /student`: Retrieves a student's information.
-- `DELETE /student`: Deletes a student record.
-- `GET /students`: Retrieves information for all students.
+This command builds the Docker images for each service and starts the containers as defined in docker-compose.yml. Note that the `scale` argument can be dynamically set in each run.
