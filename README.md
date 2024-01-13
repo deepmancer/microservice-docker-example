@@ -81,8 +81,8 @@ CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
 The server component of our architecture acts as a gateway, interfacing with the client-side applications and the internal microservice responsible for student data management. It is designed to forward requests and aggregate responses, providing a cohesive API endpoint for client applications.
 The server provides a unified API endpoint that encapsulates internal microservice calls. It abstracts the complexity of the microservice architecture from the client, simplifying client integration and allowing for future scalability and modifications without affecting the client applications.
 The server offers the following endpoints:
-- **/student**: Accepts POST, GET, PUT, and DELETE requests to manage student records. It routes these requests to the corresponding endpoints of the student microservice.
-- **/students**: Handles GET requests to retrieve a list of all students from the student microservice.
+- `/student`: Accepts POST, GET, PUT, and DELETE requests to manage student records. It routes these requests to the corresponding endpoints of the student microservice.
+- `/students`: Handles GET requests to retrieve a list of all students from the student microservice.
 
 Below is an explanation of the key components of its `Dockerfile`:
 ```
