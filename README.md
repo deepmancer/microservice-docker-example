@@ -149,12 +149,14 @@ Following is the algorithm used to perform load balancing:
 
 ### Database
 The microservice leverages a PostgreSQL database to store and manage student data. The connection and table schema are defined as follows:
-| **Parameter** | **Value** | **Description**
-| database |	postgres |	The default database provided by PostgreSQL.
-| user |	postgres |	Default PostgreSQL user.
-| password |	1qaz2wsx@ |	Password for the PostgreSQL user (use securely).
-| host |	postgres |	Hostname for the PostgreSQL service in Docker.
-| port |	5432 |	Default port for PostgreSQL.
+
+| **Parameter** | **Value** | **Description**                                |
+|---------------|-----------|------------------------------------------------|
+| database      | postgres  | The default database provided by PostgreSQL.   |
+| user          | postgres  | Default PostgreSQL user.                       |
+| password      | 1qaz2wsx@ | Password for the PostgreSQL user.              |
+| host          | postgres  | Hostname for the PostgreSQL service in Docker. |
+| port          | 5432      | Default port for PostgreSQL.                   |
 
 ## Docker Configuration
 Docker Compose
