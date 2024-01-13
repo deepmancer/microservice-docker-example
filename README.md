@@ -11,3 +11,27 @@ The student microservice offers the following functionalities:
 3. Get Student: Retrieves information for a specific student using their student ID.
 4. Get All Students: Fetches details of all students.
 5. Delete Student: Removes a student's record from the system using their student ID.
+
+## Project Structure
+
+```
+.
+├── docker-compose.yml
+├── src
+│   ├── microservice
+│   │   ├── application
+│   │   ├── config
+│   │   ├── data_access
+│   │   ├── domain
+│   │   ├── Dockerfile
+│   │   ├── app.py
+│   │   └── requirements.txt
+│   ├── nginx
+│   │   ├── Dockerfile
+│   │   └── nginx.conf
+│   └── server
+│       ├── app.py
+│       ├── Dockerfile
+│       └── requirements.txt
+└── README.md
+```
