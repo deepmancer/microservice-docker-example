@@ -5,8 +5,9 @@ This repository contains the implementation of a microservice, named `student`, 
 
 ## Microservice Functionalities
 The student microservice offers the following functionalities:
-1- Add Student: Adds a new student record with fields like name, age, and education level.
-2- Modify Student: Updates an existing student's data using the student ID.
-3- Get Student: Retrieves information for a specific student using their student ID.
-4-Get All Students: Fetches details of all students.
-5-Delete Student: Removes a student's record from the system using their student ID.
+
+1. Add Student: Adds a new student record with fields like name, age, and education level.
+2. Modify Student: Updates an existing student's data using the student ID.
+3. Get Student: Retrieves information for a specific student using their student ID.
+4. Get All Students: Fetches details of all students.
+5. Delete Student: Removes a student's record from the system using their student ID.
