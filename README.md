@@ -77,6 +77,37 @@ ENV FLASK_APP=app.py
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
 ```
 
+## Server
+The server component of our architecture acts as a gateway, interfacing with the client-side applications and the internal microservice responsible for student data management. It is designed to forward requests and aggregate responses, providing a cohesive API endpoint for client applications.
+The server provides a unified API endpoint that encapsulates internal microservice calls. It abstracts the complexity of the microservice architecture from the client, simplifying client integration and allowing for future scalability and modifications without affecting the client applications.
+The server offers the following endpoints:
+- **/student**: Accepts POST, GET, PUT, and DELETE requests to manage student records. It routes these requests to the corresponding endpoints of the student microservice.
+- **/students**: Handles GET requests to retrieve a list of all students from the student microservice.
+
+Below is an explanation of the key components of its `Dockerfile`:
+```
+# Use an official Python runtime as a base image
+FROM python:3.9
+
+# Set the working directory in the container to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . .
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Make port 4000 available to the world outside this container
+EXPOSE 4000
+
+# Define environment variable
+ENV FLASK_APP=app.py
+
+# Run the application when the container launches
+CMD ["flask", "run", "--host=0.0.0.0", "--port=4000"]
+```
+
 ## Nginx
 The Nginx service in our architecture acts as a reverse proxy, efficiently managing and routing incoming HTTP requests to the appropriate backend service. The configuration for the Nginx service is designed to ensure optimal load distribution and seamless forwarding of client requests to the `microservice`. Below is an explanation of the key components of its `Dockerfile`:
 
