@@ -108,6 +108,9 @@ ENV FLASK_APP=app.py
 CMD ["flask", "run", "--host=0.0.0.0", "--port=4000"]
 ```
 
+Additionally, `server` communicates with the `microservice` through the `Nginx` reverse proxy as demonstrated in the following:
+`MICROSERVICE_BASE_URL variable is set to "http://nginx:80`
+
 ## Nginx
 The Nginx service in our architecture acts as a reverse proxy, efficiently managing and routing incoming HTTP requests to the appropriate backend service. The configuration for the Nginx service is designed to ensure optimal load distribution and seamless forwarding of client requests to the `microservice`. Below is an explanation of the key components of its `Dockerfile`:
 
