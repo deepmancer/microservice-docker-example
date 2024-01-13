@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./src/nginx
+    ports:
+      - "7000:80"
+    depends_on:
+      - server
+      - microservice
+
+  server:
+    build: ./src/server
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+
+  microservice:
+    build: ./src/microservice
+    scale: 3
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: '1qaz2wsx@'
+      POSTGRES_DB: 'postgres'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
