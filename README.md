@@ -1,4 +1,4 @@
-# Implementing Docker Microservices Architecture - Assignment No.0:
+# Implementing Docker Microservices Architecture - Assignment No.9:
 
 ## Student Service:
 This repository contains the implementation of a microservice, named `student`, designed for managing student data within a university system. It utilizes a Dockerized environment for easy deployment and scalability. The microservice is part of a larger system that includes a server and an Nginx reverse proxy for handling requests.
@@ -189,6 +189,60 @@ services:
 volumes:
   postgres_data:
 ```
+
+## Docker Compose Overview
+The docker-compose.yml file is a `YAML` file used by Docker Compose to define and run multi-container Docker applications. With Compose, you use a YAML file to configure your application's services, networks, and volumes. Then, with a single command, you create and start all the services specified in the configuration. Below is our implementation:
+
+```
+version: '3'
+
+services:
+  nginx:
+    build: ./src/nginx
+    ports:
+      - "7000:80"
+    depends_on:
+      - server
+      - microservice
+
+  server:
+    build: ./src/server
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+
+  microservice:
+    build: ./src/microservice
+    scale: 3
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: '1qaz2wsx@'
+      POSTGRES_DB: 'postgres'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+```
+
+### Services Configuration
+- **nginx**: This service builds the Nginx container from the Dockerfile located in `./src/nginx`. It forwards the host machine's `port 7000` to the container's `port 80`. It depends on the server and microservice, meaning it will wait for these to be available before starting.
+
+- **server**: This service builds the server container from the Dockerfile in `./src/server`. The server's `port 4000` is published to the host machine, allowing external access. It depends on the postgres service, ensuring the database is ready before the server starts.
+
+- **microservice**: The microservice is built from its Dockerfile in `./src/microservice`. The scale: `3` directive tells Docker Compose to start `three instances` of this service, providing scalability. It also depends on the `postgres` service to ensure the database is available before it starts.
+
+- **postgres**: This service uses the `postgres:latest` image from Docker Hub. It maps the default `PostgreSQL port 5432` to the same port on the host, and sets environment variables for the default password and database name. The postgres_data volume is mounted to persist the database data.
+
+### Functionality
+The `docker-compose.yml` file defines a complete setup for a microservices architecture, including a web server, an application server, a microservices layer with scaling, and a database with persistent storage. The `depends_on` option is used to manage the order of service startup and dependencies. The ports option maps the containers' ports to the host, enabling external access to the services. The build context points to the location of the Dockerfiles for building the images, and the environment section specifies the necessary environment variables for the containers. The volumes section ensures data persistence for the PostgreSQL database.
 
 ## Running the Application
 
