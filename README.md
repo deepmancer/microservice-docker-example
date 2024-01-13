@@ -292,3 +292,16 @@ Finally, we delete Alireza Heidari's record:
 Also, here is a shot from the container's logs:
 
 ![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/7bf57d94-f6eb-458d-8b86-bf3b80b82519)
+
+
+
+## Question: What does "stateless" mean and how have we utilized this concept in our experiment?
+
+Stateless architecture is a design approach where each request to a server contains all the necessary information to complete the request, without requiring the server to retain user or session information between requests. This design leads to systems that are easier to scale and maintain.
+
+In our project, we've embraced statelessness in several ways:
+
+- Our use of the HTTP protocol, which doesn't retain session state between requests, means each request is independent and must be complete in itself.
+- The Nginx load balancer treats each request as an independent transaction, using the `least_conn` algorithm to distribute requests evenly across available microservice instances without considering the state of previous interactions.
+- The microservices themselves are designed to be stateless. They handle requests independently of each other, ensuring that any instance can respond to any request, which is a key feature for scaling services horizontally.
+- Interactions with the PostgreSQL database are stateless, with each query containing all the information needed without depending on previous interactions, thus enhancing performance and reliability.
