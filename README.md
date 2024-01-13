@@ -1,4 +1,4 @@
-## Docker:
+# Implementing Docker Microservices Architecture - Assignment No.0:
 
 ## Student Service:
 This repository contains the implementation of a microservice, named `student`, designed for managing student data within a university system. It utilizes a Dockerized environment for easy deployment and scalability. The microservice is part of a larger system that includes a server and an Nginx reverse proxy for handling requests.
@@ -189,11 +189,6 @@ services:
 volumes:
   postgres_data:
 ```
-
-## Dockerfiles
-- **Microservice Dockerfile**: Sets up the Python environment, installs dependencies, and defines the command to start the Flask application.
-- **Nginx Dockerfile**: Uses the official Nginx image and copies the custom `nginx.conf` for routing and load balancing.
-- **Server Dockerfile**: Similar to the microservice, it sets up the environment for running the server application.
 
 ## Running the Application
 
