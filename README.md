@@ -3,15 +3,6 @@
 ## Student Service:
 This repository contains the implementation of a microservice, named `student`, designed for managing student data within a university system. It utilizes a Dockerized environment for easy deployment and scalability. The microservice is part of a larger system that includes a server and an Nginx reverse proxy for handling requests.
 
-## Microservice Functionalities
-The student microservice offers the following functionalities:
-
-1. Add Student: Adds a new student record with fields like name, age, and education level.
-2. Modify Student: Updates an existing student's data using the student ID.
-3. Get Student: Retrieves information for a specific student using their student ID.
-4. Get All Students: Fetches details of all students.
-5. Delete Student: Removes a student's record from the system using their student ID.
-
 ## Project Structure
 
 ```
@@ -35,6 +26,44 @@ The student microservice offers the following functionalities:
 │       └── requirements.txt
 └── README.md
 ```
+## Microservice
+The student microservice offers the following functionalities:
+
+- **Add Student**: Adds a new student record with fields like name, age, and education level.
+- **Modify Student**: Updates an existing student's data using the student ID.
+- **Get Student**: Retrieves information for a specific student using their student ID.
+- **Get All Students**: Fetches details of all students.
+- **Delete Student**: Removes a student's record from the system using their student ID.
+
+## Nginx
+The Nginx service in our architecture acts as a reverse proxy, efficiently managing and routing incoming HTTP requests to the appropriate backend service. The configuration for the Nginx service is designed to ensure optimal load distribution and seamless forwarding of client requests to the `microservice`. Below is an explanation of the key components of its `Dockerfile`:
+
+```
+events {}
+
+http {
+    upstream backend {
+        least_conn;
+        server microservice:5000;
+    }
+
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://backend;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}
+```
+Following is the algorithm used to perform load balancing:
+
+**Least Connections (least_conn)**: This algorithm directs traffic to the backend server with the fewest active connections. It's particularly useful in scenarios where the request load is unevenly distributed and some requests take longer to process than others. When a new request comes in, Nginx evaluates all the servers in the `upstream` block and forwards the request to the one with the least number of active connections.
+
+## Server
 
 ## Docker Configuration
 Docker Compose
