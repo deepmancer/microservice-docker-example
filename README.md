@@ -238,3 +238,57 @@ Ourput:
 
 ![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/95fb9980-c4a9-4eaa-abd4-f656fe28ba80)
 ![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/2f71a273-95dc-4e5b-81fa-8ae6f62b990d)
+
+`docker container ls`:
+```
+CONTAINER ID   IMAGE                       COMMAND                  CREATED         STATUS         PORTS                                       NAMES
+8b13c5c9a43d   se-lab-week9_nginx          "/docker-entrypoint.…"   2 minutes ago   Up 2 minutes   0.0.0.0:7000->80/tcp, :::7000->80/tcp       se-lab-week9_nginx_1
+b20588b828e3   se-lab-week9_microservice   "flask run --host=0.…"   3 minutes ago   Up 2 minutes   5000/tcp                                    se-lab-week9_microservice_1
+62c3e1abf9a5   se-lab-week9_microservice   "flask run --host=0.…"   3 minutes ago   Up 2 minutes   5000/tcp                                    se-lab-week9_microservice_3
+ab237634f5ff   se-lab-week9_microservice   "flask run --host=0.…"   3 minutes ago   Up 2 minutes   5000/tcp                                    se-lab-week9_microservice_2
+697903e30e8c   se-lab-week9_server         "flask run --host=0.…"   3 hours ago     Up 2 minutes   0.0.0.0:4000->4000/tcp, :::4000->4000/tcp   se-lab-week9_server_1
+c51fb4c5880e   postgres:latest             "docker-entrypoint.s…"   4 hours ago     Up 2 minutes   0.0.0.0:5432->5432/tcp, :::5432->5432/tcp   se-lab-week9_postgres_1
+```
+
+`docker image ls`:
+```
+REPOSITORY                  TAG       IMAGE ID       CREATED         SIZE
+se-lab-week9_microservice   latest    a13ae5772836   5 minutes ago   1.02GB
+se-lab-week9_server         latest    bd71eafac0c7   3 hours ago     1.01GB
+se-lab-week9_nginx          latest    911c20413f6c   5 hours ago     187MB
+```
+
+## Test
+
+Initially, here is the response of the `/students/` API:
+
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/f7e69816-3a34-4ba6-a4ce-a8ce9c7f7c27)
+
+
+Afterward, we add three students as shown in the following:
+
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/415329d3-5a7c-40d4-aaa4-23836289f04a)
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/1cfa2dde-79dc-4aa0-92e0-68cf93c96176)
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/69219662-5770-45f5-b416-1d464bc34a24)
+
+Subsequently, we call the `/students/` API again:
+
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/51f59937-02c0-4c51-a834-5e86da255b2c)
+
+Additionally, we call the `/student GET API` for Alireza Heidari:
+
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/4091fec1-0936-4147-b22c-2a5592e5b8b5)
+
+Next, we modify the age of Hamidreza and set it to 23:
+
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/4f4f214b-e81b-4ca6-b85e-1f8d393a2b48)
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/78695dca-fc33-4c9b-bc98-06fea25673bc)
+
+Finally, we delete Alireza Heidari's record:
+
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/72fb07b1-c7e0-42bf-b860-72cca3435121)
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/7a2549ca-5d9c-4fa1-ad86-bd7ce442f10e)
+
+Also, here is a shot from the container's logs:
+
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/7bf57d94-f6eb-458d-8b86-bf3b80b82519)
