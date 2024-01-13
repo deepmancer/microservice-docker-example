@@ -147,7 +147,7 @@ Following is the algorithm used to perform load balancing:
 
 **Least Connections (least_conn)**: This algorithm directs traffic to the backend server with the fewest active connections. It's particularly useful in scenarios where the request load is unevenly distributed and some requests take longer to process than others. When a new request comes in, Nginx evaluates all the servers in the `upstream` block and forwards the request to the one with the least number of active connections.
 
-### Database
+## Database
 The microservice leverages a PostgreSQL database to store and manage student data. The connection and table schema are defined as follows:
 
 | **Parameter** | **Value** | **Description**                                |
@@ -158,51 +158,23 @@ The microservice leverages a PostgreSQL database to store and manage student dat
 | host          | postgres  | Hostname for the PostgreSQL service in Docker. |
 | port          | 5432      | Default port for PostgreSQL.                   |
 
+### Student Table Schema
+The student table is structured with the following columns:
+
+| Column            | Type                     | Constraints         |
+|-------------------|--------------------------|---------------------|
+| `id`              | `SERIAL`                 | `PRIMARY KEY`       |
+| `name`            | `VARCHAR(100)`           |                     |
+| `age`             | `INT`                    |                     |
+| `student_id`      | `VARCHAR(50)`            | `UNIQUE`            |
+| `education_level` | `VARCHAR(50)`            |                     |
+
+`education_level` must be either `undergraduate`, `graduate`, or `phd`.
+
 ## Docker Configuration
-Docker Compose
-The docker-compose.yml file at the root of the project defines the multi-container Docker application. It specifies the configuration of the `microservice`, `nginx`, and `server` along with the `PostgreSQL` database.
-Here's a brief overview of the `docker-compose.yml`:
-```
-version: '3'
-
-services:
-  nginx:
-    build: ./src/nginx
-    ports:
-      - "7000:80"
-    depends_on:
-      - server
-      - microservice
-
-  server:
-    build: ./src/server
-    ports:
-      - "4000:4000"
-    depends_on:
-      - postgres
-
-  microservice:
-    build: ./src/microservice
-    scale: 3
-    depends_on:
-      - postgres
-
-  postgres:
-    image: postgres:latest
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: '1qaz2wsx@'
-      POSTGRES_DB: 'postgres'
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
-```
-
-## Docker Compose Overview
-The docker-compose.yml file is a `YAML` file used by Docker Compose to define and run multi-container Docker applications. With Compose, you use a YAML file to configure your application's services, networks, and volumes. Then, with a single command, you create and start all the services specified in the configuration. Below is our implementation:
+In this project, Docker orchestrates a microservice architecture, ensuring each component is containerized for easy deployment and isolation. Docker Compose manages the multi-container setup, enabling smooth inter-service communication, consistent environments, and facilitating scaling of services to meet demand.
+The `Dockerfile` is a text document containing all the commands a user could call on the command line to assemble an image. In this project, Dockerfiles serve as the blueprint for building Docker images for the server, Nginx, and microservice components, ensuring that each service is packaged with its dependencies in a consistent, isolated environment that's ready to be deployed anywhere Docker is running.
+The `docker-compose.yml` file is a `YAML` file used by Docker Compose to define and run multi-container Docker applications. With Compose, you use a YAML file to configure your application's services, networks, and volumes. Then, with a single command, you create and start all the services specified in the configuration. Below is our implementation:
 
 ```
 version: '3'
@@ -259,6 +231,10 @@ The `docker-compose.yml` file defines a complete setup for a microservices archi
 
 To run the application, use Docker Compose:
 
-```docker-compose up --scale microservice=3```
+``` docker-compose up --build --scale microservice=3```
 
 This command builds the Docker images for each service and starts the containers as defined in docker-compose.yml. Note that the `scale` argument can be dynamically set in each run.
+Ourput:
+
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/95fb9980-c4a9-4eaa-abd4-f656fe28ba80)
+![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/2f71a273-95dc-4e5b-81fa-8ae6f62b990d)
