@@ -1,4 +1,4 @@
-![image](https://github.com/alirezaheidari-cs/SE-Lab-Week9/assets/59364943/78958d08-85ec-404b-9893-150edf872547)# Software Engineering Lab - 9th Exp.
+## Docker:
 
 ## Student Service:
 This repository contains the implementation of a microservice, named `student`, designed for managing student data within a university system. It utilizes a Dockerized environment for easy deployment and scalability. The microservice is part of a larger system that includes a server and an Nginx reverse proxy for handling requests.
