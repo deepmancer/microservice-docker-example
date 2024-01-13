@@ -147,6 +147,15 @@ Following is the algorithm used to perform load balancing:
 
 **Least Connections (least_conn)**: This algorithm directs traffic to the backend server with the fewest active connections. It's particularly useful in scenarios where the request load is unevenly distributed and some requests take longer to process than others. When a new request comes in, Nginx evaluates all the servers in the `upstream` block and forwards the request to the one with the least number of active connections.
 
+### Database
+The microservice leverages a PostgreSQL database to store and manage student data. The connection and table schema are defined as follows:
+| **Parameter** | **Value** | **Description**
+| database |	postgres |	The default database provided by PostgreSQL.
+| user |	postgres |	Default PostgreSQL user.
+| password |	1qaz2wsx@ |	Password for the PostgreSQL user (use securely).
+| host |	postgres |	Hostname for the PostgreSQL service in Docker.
+| port |	5432 |	Default port for PostgreSQL.
+
 ## Docker Configuration
 Docker Compose
 The docker-compose.yml file at the root of the project defines the multi-container Docker application. It specifies the configuration of the `microservice`, `nginx`, and `server` along with the `PostgreSQL` database.
