@@ -1,4 +1,3 @@
-```markdown
 # 🏛️ Microservices Architecture for University Student Management
 
 Welcome to the **Microservices Architecture** project! This repository hosts a `Student Service` microservice, built to efficiently manage student data within a university system. This service is Dockerized for seamless deployment and scalability, and is part of a larger system architecture that includes a server and an Nginx reverse proxy.
