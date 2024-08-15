@@ -3,7 +3,7 @@
 Welcome to the **Microservices Architecture** project! This repository hosts a `Student Service` microservice, built to efficiently manage student data within a university system. This service is Dockerized for seamless deployment and scalability, and is part of a larger system architecture that includes a server and an Nginx reverse proxy.
 
 ## 📐 Overall Service Architecture
-![Service Architecture Diagram](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/742d9296-bea8-4e9e-9054-62a9699778cc)
+![Service Architecture Diagram](https://github.com/deepmancer/deepmancer/assets/59364943/742d9296-bea8-4e9e-9054-62a9699778cc)
 
 ## 🗂️ Project Structure
 
@@ -220,33 +220,33 @@ This command will build the Docker images for each service and start the contain
 Here’s how the application works in action:
 
 1. **Initial API Call** - Fetch all students:
-   ![Initial API Call](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/f7e69816-3a34-4ba6-a4ce-a8ce9c7f7c27)
+   ![Initial API Call](https://github.com/deepmancer/deepmancer/assets/59364943/f7e69816-3a34-4ba6-a4ce-a8ce9c7f7c27)
 
 2. **Adding Students** - Add three students:
-   ![Add Student 1](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/415329d3-5a7c-40d4-aaa4-23836289f04a)
-   ![Add Student 2](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/1cfa2dde-79dc-4aa0-92e0-68cf93c96176)
-   ![Add Student 3](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/69219662-5770-45f5-b416-1d464bc34a24)
+   ![Add Student 1](https://github.com/deepmancer/deepmancer/assets/59364943/415329d3-5a7c-40d4-aaa4-23836289f04a)
+   ![Add Student 2](https://github.com/deepmancer/deepmancer/assets/59364943/1cfa2dde-79dc-4aa0-92e0-68cf93c96176)
+   ![Add Student 3](https://github.com/deepmancer/deepmancer/assets/59364943/69219662-5770-45f5-b416-1d464bc34a24)
 
 3. **Fetch All Students** - Call the `/students/` API again:
-   ![Fetch All Students](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/51f59937-02c0-4c51-a834-5e86da255b2c)
+   ![Fetch All Students](https://github.com/deepmancer/deepmancer/assets/59364943/51f59937-02c0-4c51-a834-5e86da255b2c)
 
 4. **Fetch Single Student** - Get details of a specific student:
-   ![Fetch Single Student](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/4091fec1-0936-4147-b22c-2a5592e5b8b5)
+   ![Fetch Single Student](https://github.com/deepmancer/deepmancer/assets/59364943/4091fec1-0936-4147-b22c-2a5592e5b8b5)
 
 5. **Modify Student** - Update a student’s details:
-   ![Modify Student](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/4f4f214b-e81b-4
+   ![Modify Student](https://github.com/deepmancer/deepmancer/assets/59364943/4f4f214b-e81b-4
 
 ca6-b85e-1f8d393a2b48)
-   ![Updated Student](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/78695dca-fc33-4c9b-bc98-06fea25673bc)
+   ![Updated Student](https://github.com/deepmancer/deepmancer/assets/59364943/78695dca-fc33-4c9b-bc98-06fea25673bc)
 
 6. **Delete Student** - Remove a student’s record:
-   ![Delete Student](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/72fb07b1-c7e0-42bf-b860-72cca3435121)
-   ![Post Deletion](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/7a2549ca-5d9c-4fa1-ad86-bd7ce442f10e)
+   ![Delete Student](https://github.com/deepmancer/deepmancer/assets/59364943/72fb07b1-c7e0-42bf-b860-72cca3435121)
+   ![Post Deletion](https://github.com/deepmancer/deepmancer/assets/59364943/7a2549ca-5d9c-4fa1-ad86-bd7ce442f10e)
 
 ### 📜 Logs
 
 For detailed logs, check the container logs:
-![Logs](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/7bf57d94-f6eb-458d-8b86-bf3b80b82519)
+![Logs](https://github.com/deepmancer/deepmancer/assets/59364943/7bf57d94-f6eb-458d-8b86-bf3b80b82519)
 
 ---
 
