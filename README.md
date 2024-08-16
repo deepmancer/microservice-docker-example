@@ -10,6 +10,8 @@
 
 Welcome to the **Microservices Architecture** project! This repository hosts a `Student Service` microservice, built to efficiently manage student data within a university system. This service is Dockerized for seamless deployment and scalability, and is part of a larger system architecture that includes a server and an Nginx reverse proxy.
 
+---
+
 ## 📐 Overall Service Architecture
 ![Service Architecture Diagram](https://github.com/deepmancer/SE-Lab-Week9/assets/59364943/742d9296-bea8-4e9e-9054-62a9699778cc)
 
