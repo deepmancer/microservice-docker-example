@@ -1,5 +1,13 @@
 # 🏛️ Microservices Architecture for University Student Management
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Flask-000000.svg?style=for-the-badge&logo=Flask&logoColor=white" alt="Flask">
+  <img src="https://img.shields.io/badge/NGINX-009639.svg?style=for-the-badge&logo=NGINX&logoColor=white" alt="NGINX">
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1.svg?style=for-the-badge&logo=PostgreSQL&logoColor=white" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python">
+  <img src="https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white" alt="Docker">
+</p>
+
 Welcome to the **Microservices Architecture** project! This repository hosts a `Student Service` microservice, built to efficiently manage student data within a university system. This service is Dockerized for seamless deployment and scalability, and is part of a larger system architecture that includes a server and an Nginx reverse proxy.
 
 ## 📐 Overall Service Architecture
